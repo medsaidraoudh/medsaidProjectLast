@@ -45,7 +45,9 @@ const {setCurrentUser}=this.props;
 
         setCurrentUser(userAuth)
 
-
+        // addCollectionsAndDocuments('collections', collectionsArray.map((
+        //   {title,items}
+        // )=>({title,items})))
         console.log(this.state);
 
       // this.setState({currentUser: user});
@@ -82,7 +84,8 @@ const {setCurrentUser}=this.props;
 }
 }
 const mapStateToProps= createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+
 })
 const mapDispatchToProps=dispatch=>({
  setCurrentUser: user=> dispatch(setCurrentUser(user))
