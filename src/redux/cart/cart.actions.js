@@ -18,3 +18,7 @@ export const removeOrDecreseItem=(item)=>({
     type: cartActionTypes.DECREASE_OR_REMOVE,
     payload: item
 })
+
+export const clearCart=()=>({
+    type:cartActionTypes.CLEAR_CART
+})

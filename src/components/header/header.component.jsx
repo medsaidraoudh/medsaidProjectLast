@@ -10,7 +10,9 @@ import {createStructuredSelector} from 'reselect'
 import {selectCartHidden} from '../../redux/cart/cart.selectors';
 import {selectCurrentUser} from '../../redux/user/user.selectors';
 import { toggleCartHidden } from '../../redux/cart/cart.actions'
-const Header=({currentUser,hidden, dispatch})=>(
+import { signOutStart } from '../../redux/user/user.actions';
+
+const Header=({currentUser,hidden,dispatch, signOutStart} )=>(
     <div className='header'>
         <Link  className='logo-container' to="/">
     <Logo className='logo' />
@@ -25,7 +27,7 @@ const Header=({currentUser,hidden, dispatch})=>(
             </Link>
             {
                 currentUser ?
-                (<div className="option" onClick={()=>auth.signOut()}>SIGN OUT</div>)
+                (<div className="option" onClick={signOutStart}>SIGN OUT</div>)
  :(
      <Link className='option' to='/signin'>
          SIGN IN
@@ -45,5 +47,7 @@ currentUser: selectCurrentUser,
 hidden: selectCartHidden
 
 })
-
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps=dispatch=>({
+    signOutStart:()=>dispatch(signOutStart())
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Header);
